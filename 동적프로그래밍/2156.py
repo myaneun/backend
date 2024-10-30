@@ -1,18 +1,17 @@
+"""첫째 줄에 포도주 잔의 개수 n이 주어진다. 
+(1 ≤ n ≤ 10,000) 둘째 줄부터 n+1번째 줄까지 포도주 잔에 들어있는 포도주의 양이 순서대로 주어진다. 
+포도주의 양은 1,000 이하의 음이 아닌 정수이다."""
 import sys
-n = int(sys.stdin.readline())
-wine=[]
+input = sys.stdin.readline
+
+n=int(input())
+w=[0]*10000
+d=[0]*10000
 for i in range(n):
-    wine.append(int(input()))
-
-d = [0]*n
-d[0]=wine[0]
-if n > 1:
-    d[1] = wine[0]+wine[1]
-
-if n > 2:
-    d[2] = max(wine[2]+wine[1], wine[2]+wine[0], d[1])
-
+    w[i] = int(input())
+d[0]=w[0]
+d[1] = w[0]+w[1]
+d[2] = max(w[2]+w[1], w[2]+w[0])
 for i in range(3, n):
-    d[i] = max(d[i-1], d[i-3]+wine[i-1]+wine[i], d[i-2]+wine[i])
-
-print(d[n-1])
+    d[i] = max(w[i]+d[i-2], w[i]+w[i-1]+d[i-3], d[i-1]) 
+print(max(d))

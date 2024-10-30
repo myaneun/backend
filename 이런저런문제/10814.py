@@ -1,11 +1,10 @@
 import sys
-n = int(sys.stdin.readline())
-user=[]
-#리스트 형태로 입력
-for i in range(n):
-    user.append(list(input().split()))
+input = sys.stdin.readline
 
-user.sort(key=lambda a : int(a[0]))
-
-for j in range(n):
-    print(user[j][0], user[j][1])
+n = int(input())
+a = []
+for _ in range(n):
+    [age, name] = map(str, input().split())
+    a.append([int(age), name])
+for i in sorted(a, key=lambda x: x[0]): #나이를 기준으로 정렬하라는 의미
+    print(i[0], i[1])

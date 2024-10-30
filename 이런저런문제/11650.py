@@ -1,11 +1,12 @@
 import sys
-n = int(sys.stdin.readline())
-list=[]
-for i in range(n):
+input = sys.stdin.readline
+
+n = int(input())
+a = []
+for _ in range(n):
     [x, y] = map(int, input().split())
-    list.append([x,y])
+    a.append([x,y])
 
-s_list = sorted(list)
-
-for j in range(n):
-    print(s_list[j][0], s_list[j][1])
+a.sort()
+for i in a:
+    print(i[0], i[1])
